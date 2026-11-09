@@ -13,6 +13,18 @@ The plugin is written to `build/libs/tenant-snapshot-report-1.4.0.jar`.
 It is built against plugin API 1.1.6 and declares Morpheus 7.0.0 as its minimum. To target a
 newer appliance, change `morphPluginApiVersion` in `gradle.properties`.
 
+## Automatic builds
+
+Every push to `main` and every pull request builds the jar on GitHub Actions. Download it from the
+run's **Artifacts** section on the Actions tab.
+
+To publish a release, set `version` in `build.gradle`, commit, then push a matching tag:
+
+    git tag v1.4.0
+    git push origin v1.4.0
+
+The jar is attached to a GitHub release for that tag. The build fails if the tag and version differ.
+
 ## Install
 
 1. Go to **Administration > Integrations > Plugins** and upload the jar.
