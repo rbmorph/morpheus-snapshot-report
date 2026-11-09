@@ -1,0 +1,64 @@
+{{#each header}}
+	{{#if dataMap.error}}
+		<p><strong>{{dataMap.error}}</strong></p>
+	{{else}}
+		{{#if dataMap.notice}}<p><em>{{dataMap.notice}}</em></p>{{/if}}
+		<h2>{{dataMap.tenant}}</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Instances</th>
+					<th>Instances with snapshots</th>
+					<th>Snapshots</th>
+					<th>Oldest snapshot</th>
+					<th>Generated</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{dataMap.instanceCount}}</td>
+					<td>{{dataMap.instancesWithSnapshots}}</td>
+					<td>{{dataMap.snapshotCount}}</td>
+					<td>{{dataMap.oldest}}</td>
+					<td>{{dataMap.generated}}</td>
+				</tr>
+			</tbody>
+		</table>
+		{{#if dataMap.noRows}}<p>No snapshots found.</p>{{/if}}
+	{{/if}}
+{{/each}}
+
+{{#if main}}
+	<table>
+		<thead>
+			<tr>
+				<th>Instance</th>
+				<th>Status</th>
+				<th>Server</th>
+				<th>Cloud</th>
+				<th>Snapshot</th>
+				<th>Description</th>
+				<th>Created</th>
+				<th>Age (days)</th>
+				<th>Size (GB)</th>
+				<th>Current</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each main}}
+				<tr>
+					<td>{{dataMap.instance}}</td>
+					<td>{{dataMap.instanceStatus}}</td>
+					<td>{{dataMap.server}}</td>
+					<td>{{dataMap.cloud}}</td>
+					<td>{{dataMap.snapshot}}</td>
+					<td>{{dataMap.description}}</td>
+					<td>{{dataMap.created}}</td>
+					<td>{{dataMap.ageDays}}</td>
+					<td>{{dataMap.sizeGb}}</td>
+					<td>{{dataMap.currentlyActive}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+{{/if}}

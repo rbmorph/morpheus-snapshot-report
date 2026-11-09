@@ -1,0 +1,36 @@
+plugins {
+    id 'groovy'
+}
+
+group = 'com.custom.morpheus'
+version = '1.4.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Everything here is supplied by the Morpheus appliance at runtime, so nothing is bundled.
+dependencies {
+    compileOnly "com.morpheusdata:morpheus-plugin-api:${morphPluginApiVersion}"
+    compileOnly "org.codehaus.groovy:groovy-all:${groovyVersion}"
+    compileOnly 'io.reactivex.rxjava3:rxjava:3.1.8'
+    compileOnly 'org.slf4j:slf4j-api:1.7.26'
+}
+
+jar {
+    manifest {
+        attributes(
+            'Plugin-Class': 'com.custom.morpheus.snapshotreport.TenantSnapshotReportPlugin',
+            'Plugin-Version': archiveVersion.get(),
+            'Morpheus-Name': 'Tenant Snapshot Report',
+            'Morpheus-Code': 'tenant-snapshot-report',
+            'Morpheus-Description': 'Lists the snapshots on every instance in a tenant',
+            'Morpheus-Min-Appliance-Version': '7.0.0'
+        )
+    }
+}
