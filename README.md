@@ -18,12 +18,9 @@ newer appliance, change `morphPluginApiVersion` in `gradle.properties`.
 Every push to `main` and every pull request builds the jar on GitHub Actions. Download it from the
 run's **Artifacts** section on the Actions tab.
 
-To publish a release, set `version` in `build.gradle`, commit, then push a matching tag:
-
-    git tag v1.4.0
-    git push origin v1.4.0
-
-The jar is attached to a GitHub release for that tag. The build fails if the tag and version differ.
+To publish a release, push a version tag such as `1.5.0` or `v1.5.0`, or create a release on GitHub
+with a new tag. The jar is built with the tag's version and attached to that release. The tag must
+point at a commit that includes `.github/workflows/build.yml`.
 
 ## Install
 

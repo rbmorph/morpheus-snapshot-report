@@ -3,7 +3,8 @@ plugins {
 }
 
 group = 'com.custom.morpheus'
-version = '1.4.0'
+// Release builds pass -PpluginVersion from the git tag; this is the default for other builds.
+version = findProperty('pluginVersion') ?: '1.5.0'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
